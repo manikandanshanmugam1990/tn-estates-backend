@@ -1,0 +1,79 @@
+@chennaiId = 6adf40346db385ea511e1577
+@coimbatoreId = 6adf40906db385ea511e157b
+@projectId = 6adc17de4d4b13d1f0615010
+
+### 1. Add District Chennai
+POST http://localhost:5000/api/locations
+Content-Type: application/json
+
+{
+  "name": "Chennai",
+  "type": "district"
+}
+
+### 2. Add District Coimbatore
+POST http://localhost:5000/api/locations
+Content-Type: application/json
+
+{
+  "name": "Coimbatore",
+  "type": "district"
+}
+
+### 3. Add Taluk Adyar (Chennai)
+POST http://localhost:5000/api/locations
+Content-Type: application/json
+
+{
+  "name": "Adyar",
+  "type": "taluk",
+  "parentId": "{{chennaiId}}"
+}
+
+### 4. Add Taluk Tambaram (Chennai)
+POST http://localhost:5000/api/locations
+Content-Type: application/json
+
+{
+  "name": "Tambaram",
+  "type": "taluk",
+  "parentId": "{{chennaiId}}"
+}
+
+### 5. Add Taluk Pollachi (Coimbatore)
+POST http://localhost:5000/api/locations
+Content-Type: application/json
+
+{
+  "name": "Pollachi",
+  "type": "taluk",
+  "parentId": "{{coimbatoreId}}"
+}
+
+### 6. Add Plot P1
+POST http://localhost:5000/api/plots
+Content-Type: application/json
+
+{
+  "projectId": "{{projectId}}",
+  "plotNumber": "P1",
+  "price": "₹ 25 Lakhs",
+  "size": "1200 sqft",
+  "x": "20%",
+  "y": "30%",
+  "status": "Available"
+}
+
+### 7. Add Plot P2
+POST http://localhost:5000/api/plots
+Content-Type: application/json
+
+{
+  "projectId": "{{projectId}}",
+  "plotNumber": "P2",
+  "price": "₹ 30 Lakhs",
+  "size": "1400 sqft",
+  "x": "45%",
+  "y": "25%",
+  "status": "Booked"
+}
